@@ -1,0 +1,22 @@
+.MuiFilledInput-root:before {
+    border: none !important;
+}
+
+.MuiFilledInput-root:hover::before {
+    border: none !important;
+}
+
+.MuiFilledInput-underline::after {
+    border-bottom: none !important;
+}
+
+.css-1igu078-MuiInputAdornment-root {
+    margin-left: 0px !important;
+}
+
+[data-rhf-name] .MuiFilledInput-input::placeholder {
+    font-size: 15px;
+    font-weight: 400;
+    color: #9aa4b2;
+    opacity: 1;
+}
