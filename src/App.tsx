@@ -1,7 +1,10 @@
+import { ToastContainer } from "react-toastify";
+
 function App() {
     return (
         <>
-            <div className="">test</div>
+            <ToastContainer position="top-right" />
+            <div>test</div>
         </>
     );
 }
