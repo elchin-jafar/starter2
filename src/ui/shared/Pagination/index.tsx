@@ -1,6 +1,12 @@
+import ReactPaginateModule from "react-paginate";
+
+// TODO: Improve ReactPaginate import method here
+const ReactPaginate = ((ReactPaginateModule as unknown as { default?: unknown })
+    .default ?? ReactPaginateModule) as typeof ReactPaginateModule;
+
 import { cn } from "@/app/utils/cn";
 import { ChevronRight } from "lucide-react";
-import ReactPaginate from "react-paginate";
+
 import type { PaginationType } from "./pagination.type";
 import { PaginationVM } from "./pagination.vm";
 

@@ -3,6 +3,10 @@ import type { AllUsersResDTO } from "../res_dto/get_all_users.dto";
 
 export const getAllUsersMapper = {
     resDtoToModel: (dto: AllUsersResDTO): AllUsersModel => {
+        const perPage = dto.limit || 1;
+        const page = Math.floor(dto.skip / perPage) + 1;
+        const totalPages = Math.ceil(dto.total / perPage);
+
         return {
             users: dto.users.map((user) => ({
                 id: user.id,
@@ -12,9 +16,14 @@ export const getAllUsersMapper = {
                 email: user.email,
                 image: user.image,
             })),
-            total: dto.total,
-            skip: dto.skip,
-            limit: dto.limit,
+            meta: {
+                page,
+                perPage,
+                total: dto.total,
+                totalPages,
+                hasNext: page < totalPages,
+                hasPrev: page > 1,
+            },
         };
     },
 };

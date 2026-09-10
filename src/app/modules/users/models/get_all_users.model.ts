@@ -9,6 +9,7 @@ export type UserModel = {
     image: string;
 };
 
-export type AllUsersModel = BaseMetaModel & {
+export type AllUsersModel = {
     users: UserModel[];
+    meta: BaseMetaModel;
 };
