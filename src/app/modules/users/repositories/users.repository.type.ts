@@ -9,6 +9,6 @@ export type UserRepositoryType = {
     getByIdUser(id: number): Promise<UserModel>;
     addUser(data: AddUserModel): Promise<unknown>;
     updateUser(id: number, data: UpdateUserModel): Promise<unknown>;
-    deleteUser(id: number): Promise<unknown>;
+    deleteUser(id: string): Promise<unknown>;
     searchUser(params: SearchUsersParams): Promise<AllUsersModel>;
 };

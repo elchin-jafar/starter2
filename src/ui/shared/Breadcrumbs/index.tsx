@@ -14,7 +14,7 @@ const Breadcrumbs = ({ crumbs }: BreadcrumbsType) => {
 
                     const itemClass = cn(
                         "text-14px400",
-                        isLast ? "text-teal-600" : "text-gray-400",
+                        isLast ? "text-slate-100" : "text-slate-400",
                         !isLink && !isLast && "cursor-default",
                     );
                     return (
@@ -24,7 +24,7 @@ const Breadcrumbs = ({ crumbs }: BreadcrumbsType) => {
                                     to={crumb.link!}
                                     className={cn(
                                         itemClass,
-                                        "hover:text-gray-600",
+                                        "hover:text-slate-200",
                                     )}
                                 >
                                     {crumb.name}
@@ -43,8 +43,8 @@ const Breadcrumbs = ({ crumbs }: BreadcrumbsType) => {
                                     className={cn(
                                         "size-4",
                                         index === crumbs.length - 2
-                                            ? "text-teal-600"
-                                            : "text-gray-400",
+                                            ? "text-slate-300"
+                                            : "text-slate-600",
                                     )}
                                 />
                             )}

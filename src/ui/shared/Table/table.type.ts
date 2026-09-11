@@ -68,3 +68,10 @@ export type TableHeadCellType = PropsWithChildren &
 export type TitleDataType = PropsWithChildren<{
     className?: string;
 }>;
+
+export type RowActionVariantType = "view" | "edit" | "delete";
+
+export type RowActionButtonType = {
+    variant: RowActionVariantType;
+    onClick: () => void;
+};

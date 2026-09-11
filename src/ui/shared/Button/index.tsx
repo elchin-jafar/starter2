@@ -1,6 +1,6 @@
 import { ButtonVM } from "./button.vm";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
-import { ButtonType } from "./button.type";
+import { type ButtonType } from "./button.type";
 import { cn } from "@/app/utils/cn";
 
 const Button = ({
