@@ -7,7 +7,7 @@ import DeleteModal from "@/ui/components/DeleteModal";
 import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 import Input from "@/ui/shared/Input";
-import { Search } from "lucide-react";
+import { Search, UserPlus } from "lucide-react";
 
 const Users = () => {
     const {
@@ -59,18 +59,19 @@ const Users = () => {
     ];
     return (
         <>
-            <Input
-                name="search"
-                className="w-3xl mb-6"
-                placeholder="Axtar"
-                isDebounce
-                onDebounce={handleSearch}
-                trailing={
-                    <div>
-                        <Search />
-                    </div>
-                }
-            />
+            <div className="flex gap-2">
+                <Input
+                    name="search"
+                    className="w-auto mb-6"
+                    placeholder="Axtar"
+                    isDebounce
+                    onDebounce={handleSearch}
+                    trailing={<Search />}
+                />
+                <Button className="w-auto cursor-pointer">
+                    <UserPlus />
+                </Button>
+            </div>
             {usersResponse && (
                 <TableContainer
                     headData={columns}
