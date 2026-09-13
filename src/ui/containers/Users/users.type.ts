@@ -7,6 +7,6 @@ export type RowsType = {
     image: string;
 };
 
-export type RowActionType = "view" | "delete";
+export type RowActionType = "view" | "delete" | "edit";
 
 export type UsersModalType = "create" | "edit" | "delete";

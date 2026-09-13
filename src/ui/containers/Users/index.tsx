@@ -8,16 +8,22 @@ import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 import Input from "@/ui/shared/Input";
 import { Search, UserPlus } from "lucide-react";
+import UserAddModal from "@/ui/components/UserAddModal";
+import UserEditModal from "@/ui/components/UserEditModal";
 
 const Users = () => {
     const {
         usersResponse,
         requestStateUsers,
         handleRowAction,
+        isCreateOpen,
+        isEditOpen,
         isDeleteOpen,
-        toggleDeleteModal,
+        userId,
+        toggleModal,
         handleDelete,
         handleSearch,
+        openModal,
     } = UsersVM();
 
     const columns: TableHeaderType<RowsType>[] = [
@@ -50,6 +56,10 @@ const Users = () => {
                         onClick={() => handleRowAction("view", row.id)}
                     />
                     <RowActionButton
+                        variant="edit"
+                        onClick={() => handleRowAction("edit", row.id)}
+                    />
+                    <RowActionButton
                         variant="delete"
                         onClick={() => handleRowAction("delete", row.id)}
                     />
@@ -69,7 +79,7 @@ const Users = () => {
                     trailing={<Search />}
                 />
                 <Button className="w-auto cursor-pointer">
-                    <UserPlus />
+                    <UserPlus onClick={() => openModal("create")} />
                 </Button>
             </div>
             {usersResponse && (
@@ -84,16 +94,27 @@ const Users = () => {
                 />
             )}
 
+            <UserAddModal
+                visible={isCreateOpen}
+                setVisible={() => toggleModal("create")}
+            />
+
+            <UserEditModal
+                visible={isEditOpen}
+                setVisible={() => toggleModal("edit")}
+                userId={userId}
+            />
+
             <DeleteModal
                 visible={isDeleteOpen}
-                setVisible={toggleDeleteModal}
+                setVisible={() => toggleModal("delete")}
                 title="Istifadecini sil"
                 description="Bu istifadecini silmek istediyinize eminsiniz?"
                 action={
                     <>
                         <Button
                             variant={ButtonVariantsEnum.OUTLINED}
-                            onClick={toggleDeleteModal}
+                            onClick={() => toggleModal("delete")}
                             className="cursor-pointer"
                         >
                             Legv et

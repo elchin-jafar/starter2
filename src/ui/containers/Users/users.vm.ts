@@ -9,19 +9,20 @@ import { useDeleteUserApi } from "@/app/modules/users/api/deleteUser.api";
 import { snackbar } from "@/ui/shared/Snackbar";
 import { SnackbarStatusEnum } from "@/data/enum/snackbar_status.enum";
 import { useSearchUsersApi } from "@/app/modules/users/api/searchUsers.api";
+import type { ActionType } from "@/app/store/modal/modal_slice.type";
 
 export const UsersVM = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const usersStore = useAppSelector((store) => store.modal.users);
 
-    const { delete: del } = usersStore;
+    const { create, edit, delete: del } = usersStore;
 
     const { searchParams, setSelectedId, handleSearch } = useListPage({
         idParam: "userId",
-        isAnyModalOpen: del,
+        isAnyModalOpen: del || edit,
         onDeepLink: (modal) => {
-            if (modal === "delete") openModal(modal);
+            if (modal === "delete" || modal === "edit") openModal(modal);
         },
     });
 
@@ -60,16 +61,6 @@ export const UsersVM = () => {
     const openModal = (type: UsersModalType) =>
         dispatch(setUsersModal({ type, value: true }));
 
-    // const {
-    //     data: usersResponse,
-    //     isFetching,
-    //     isError,
-    //     isSuccess,
-    // } = useGetAllUsersApi({
-    //     page,
-    //     pageSize: 10,
-    // });
-
     const requestStateUsers = useRequestState({
         isFetching,
         isError,
@@ -86,22 +77,29 @@ export const UsersVM = () => {
                 setSelectedId(id);
                 openModal(type);
                 return;
+            case "edit":
+                setSelectedId(id);
+                openModal(type);
+                return;
             default:
                 return;
         }
     };
 
-    const toggleDeleteModal = () => {
-        dispatch(setUsersModal({ type: "delete", value: !del }));
-    };
+    const toggleModal = (type: Exclude<ActionType, "view">) =>
+        dispatch(setUsersModal({ type, value: !usersStore[type] }));
 
     return {
         usersResponse,
         requestStateUsers,
         handleRowAction,
+        isCreateOpen: create,
+        isEditOpen: edit,
         isDeleteOpen: del,
-        toggleDeleteModal,
+        userId,
+        toggleModal,
         handleDelete,
         handleSearch,
+        openModal,
     };
 };
