@@ -1,15 +1,15 @@
-import { TableContainer } from "@/ui/shared/Table/table_container";
-import { UsersVM } from "./users.vm";
-import type { TableHeaderType } from "@/ui/shared/Table/table.type";
-import type { RowsType } from "./users.type";
-import { RowActionButton } from "@/ui/shared/Table";
-import DeleteModal from "@/ui/components/DeleteModal";
-import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
+import DeleteModal from "@/ui/components/DeleteModal";
+import UserAddModal from "@/ui/containers/Users/modals/add";
+import UserEditModal from "@/ui/containers/Users/modals/edit";
+import Button from "@/ui/shared/Button";
 import Input from "@/ui/shared/Input";
+import { RowActionButton } from "@/ui/shared/Table";
+import type { TableHeaderType } from "@/ui/shared/Table/table.type";
+import { TableContainer } from "@/ui/shared/Table/table_container";
 import { Search, UserPlus } from "lucide-react";
-import UserAddModal from "@/ui/components/UserAddModal";
-import UserEditModal from "@/ui/components/UserEditModal";
+import type { RowsType } from "./users.type";
+import { UsersVM } from "./users.vm";
 
 const Users = () => {
     const {
@@ -19,7 +19,6 @@ const Users = () => {
         isCreateOpen,
         isEditOpen,
         isDeleteOpen,
-        userId,
         toggleModal,
         handleDelete,
         handleSearch,
@@ -78,8 +77,11 @@ const Users = () => {
                     onDebounce={handleSearch}
                     trailing={<Search />}
                 />
-                <Button className="w-auto cursor-pointer">
-                    <UserPlus onClick={() => openModal("create")} />
+                <Button
+                    className="w-auto cursor-pointer"
+                    onClick={() => openModal("create")}
+                >
+                    <UserPlus />
                 </Button>
             </div>
             {usersResponse && (
@@ -102,7 +104,6 @@ const Users = () => {
             <UserEditModal
                 visible={isEditOpen}
                 setVisible={() => toggleModal("edit")}
-                userId={userId}
             />
 
             <DeleteModal

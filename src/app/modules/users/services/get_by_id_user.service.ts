@@ -4,7 +4,7 @@ import { endpoints } from "@/data/utils/endpoints";
 import type { UserResDTO } from "../res_dto/get_by_id_user.dto";
 import { userSchema } from "../schemas/dto_validations/get_by_id_user.schema";
 
-export const getByIdUserService = async (id: number) => {
+export const getByIdUserService = async (id: string) => {
     const res = await axiosInstance.get<UserResDTO>(
         endpoints.users.getByIdUser(id),
     );

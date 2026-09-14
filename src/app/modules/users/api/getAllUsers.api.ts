@@ -1,6 +1,6 @@
+import { RevalidateTags } from "@/data/utils/revalidate_tags";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { UserRepository } from "../repositories";
-import { RevalidateTags } from "@/data/utils/revalidate_tags";
 
 export const DEFAULT_USERS_PAGE_SIZE = 20;
 

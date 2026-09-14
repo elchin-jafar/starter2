@@ -1,10 +1,10 @@
+import { RevalidateTags } from "@/data/utils/revalidate_tags";
 import { useQuery } from "@tanstack/react-query";
 import { UserRepository } from "../repositories";
-import { RevalidateTags } from "@/data/utils/revalidate_tags";
 
-export const useGetByIdUserApi = ({ id }: { id: number }) => {
+export const useGetByIdUserApi = ({ id }: { id: string }) => {
     return useQuery({
-        queryKey: RevalidateTags.users.byId(id),
+        queryKey: RevalidateTags.users.byId(Number(id)),
         queryFn: () => UserRepository.getByIdUser(id),
         enabled: !!id,
     });

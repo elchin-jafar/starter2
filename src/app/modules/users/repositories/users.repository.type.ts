@@ -6,7 +6,7 @@ import type { SearchUsersParams } from "../services/search_users.service";
 
 export type UserRepositoryType = {
     getAllUsers(params: GetAllUsersParams): Promise<AllUsersModel>;
-    getByIdUser(id: number): Promise<UserModel>;
+    getByIdUser(id: string): Promise<UserModel>;
     addUser(data: AddUserModel): Promise<unknown>;
     updateUser(id: number, data: UpdateUserModel): Promise<unknown>;
     deleteUser(id: string): Promise<unknown>;

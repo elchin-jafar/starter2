@@ -1,15 +1,15 @@
 import { useListPage } from "@/app/hooks/useListPage";
 import { useAppDispatch, useAppSelector } from "@/app/hooks/useRedux";
 import { useRequestState } from "@/app/hooks/useRequestState";
+import { useDeleteUserApi } from "@/app/modules/users/api/deleteUser.api";
 import { useGetAllUsersApi } from "@/app/modules/users/api/getAllUsers.api";
+import { useSearchUsersApi } from "@/app/modules/users/api/searchUsers.api";
 import { setUsersModal } from "@/app/store/modal";
+import type { ActionType } from "@/app/store/modal/modal_slice.type";
+import { SnackbarStatusEnum } from "@/data/enum/snackbar_status.enum";
+import { snackbar } from "@/ui/shared/Snackbar";
 import { useNavigate } from "react-router";
 import type { RowActionType, UsersModalType } from "./users.type";
-import { useDeleteUserApi } from "@/app/modules/users/api/deleteUser.api";
-import { snackbar } from "@/ui/shared/Snackbar";
-import { SnackbarStatusEnum } from "@/data/enum/snackbar_status.enum";
-import { useSearchUsersApi } from "@/app/modules/users/api/searchUsers.api";
-import type { ActionType } from "@/app/store/modal/modal_slice.type";
 
 export const UsersVM = () => {
     const navigate = useNavigate();
@@ -96,7 +96,6 @@ export const UsersVM = () => {
         isCreateOpen: create,
         isEditOpen: edit,
         isDeleteOpen: del,
-        userId,
         toggleModal,
         handleDelete,
         handleSearch,
