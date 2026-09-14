@@ -42,12 +42,12 @@ export const UserEditFormVM = () => {
     });
 
     useEffect(() => {
-        if (requestStateUser !== RequestStateEnum.LOADING) {
+        if (requestStateUser === RequestStateEnum.SUCCESS && user) {
             methods.reset({
-                firstName: user?.firstName,
-                lastName: user?.lastName,
-                age: String(user?.age),
-                email: user?.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                age: String(user.age),
+                email: user.email,
             });
         }
     }, [methods, requestStateUser, user]);

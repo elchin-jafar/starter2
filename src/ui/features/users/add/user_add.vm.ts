@@ -30,7 +30,6 @@ export const UserAddFormVM = () => {
     };
 
     const onError = (error: FieldErrors<UserFormModel>) => {
-        snackbar(SnackbarStatusEnum.ERROR, "Xəta baş verdi");
         console.log(error);
     };
 

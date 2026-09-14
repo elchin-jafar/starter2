@@ -3,7 +3,7 @@ import Users from "@/ui/containers/Users";
 
 const UsersPage = () => {
     useHeaderContent({
-        breadcrumbs: [{ id: 1, name: "Users", link: "/users" }],
+        breadcrumbs: [{ id: 1, name: "İstifadəçilər", link: "/users" }],
     });
 
     return (
