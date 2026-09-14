@@ -1,4 +1,5 @@
 import { useHeaderContent } from "@/app/hooks/userHeaderContent";
+import UserDetails from "@/ui/containers/UserDetails";
 
 const UserDetailsPage = () => {
     useHeaderContent({
@@ -7,7 +8,7 @@ const UserDetailsPage = () => {
             { id: 2, name: "İstifadəçi məlumatları", link: "/users/:id" },
         ],
     });
-    return <>User details by id</>;
+    return <UserDetails />;
 };
 
 export default UserDetailsPage;
