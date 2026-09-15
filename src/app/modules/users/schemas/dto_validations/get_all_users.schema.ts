@@ -6,8 +6,8 @@ const userSchema = z.object({
     firstName: z.string(),
     lastName: z.string(),
     age: z.number(),
-    email: z.string().email(),
-    image: z.string().url(),
+    email: z.email(),
+    image: z.url(),
 });
 
 export const allUsersSchema = baseMetaSchema.extend({
