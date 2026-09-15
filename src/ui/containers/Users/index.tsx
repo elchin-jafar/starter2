@@ -109,8 +109,8 @@ const Users = () => {
             <DeleteModal
                 visible={isDeleteOpen}
                 setVisible={() => toggleModal("delete")}
-                title="Istifadecini sil"
-                description="Bu istifadecini silmek istediyinize eminsiniz?"
+                title="İstifadəçini sil"
+                description="Bu istifadəçini silmək istədiyinizə əminsiniz?"
                 action={
                     <>
                         <Button
@@ -118,7 +118,7 @@ const Users = () => {
                             onClick={() => toggleModal("delete")}
                             className="cursor-pointer"
                         >
-                            Legv et
+                            Ləğv et
                         </Button>
                         <Button
                             variant={ButtonVariantsEnum.DANGER}
